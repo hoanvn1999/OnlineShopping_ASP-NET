@@ -3,40 +3,154 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/style.css")
+    @Styles.Render("~/Content/all-ie.css")
+    @Styles.Render("~/Content/ie8.css")
+    @Styles.Render("~/Content/common.css")
     @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript">
+        $(function () {
+            $('.slides').slides({
+                preload: true,
+                generatePagination: true,
+                play: 3000
+            });
+        });
+    </script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <!--Wrapper-->
+    <div id="wrapper">
+        <!--Page-->
+        <div class="page shadow">
+            <!--Header-->
+            <div id="header">
+                <div class="primary-section">
+                    <div class="logo">
+                        <a href="http://www.webgranth.com">
+                            <img src="~/images/logo.png" alt="logo"
+                                 title="webgranth" />
+                        </a>
+                    </div>
+                    <div class="header-aside">
+                        <span>Call Us: +91 120 4735100</span>
+                        <ul>
+                            <li class="border"><a href="#" class="log"> login </a></li>
+                            <li><a href="#" class="user">register</a></li>
+                            <li class="carts"><a href="#" class="cart">Shopping Cart</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="nav-section">
+                    <ul class="navigation">
+                        <li class="home"><a href="index.html" class="home">Home </a></li>
+                        <li><a href="#">Service </a></li>
+                        <li><a href="#">Shops </a></li>
+                        <li><a href="#">Reviews</a></li>
+                        <li><a href="#">New Products </a></li>
+                        <li><a href="#">Specials </a></li>
+                        <li><a href="#">Contact </a></li>
+                    </ul>
+                    <ul class="search-box">
+                        <li>
+                            <input type="text" value="search" id="user_search" autocomplete="off"
+                                   onkeypress="submitenter_search(event);" onblur="if (this.value=='')this.value='search';"
+                                   onfocus="if (this.value=='search')this.value=''" />
+                        </li>
+                        <li class="sms-last">
+                            <input type="submit" value="" class="submit" />
+                            <a href="#"> search</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <!--Header-->
+            <!--Content-->
+            <div id="content">
+                <div class="sidebar">
+                    <div class="latest-product">
+                        <h2>Our Services</h2>
+                        <ul class="info">
+                            <li><a href="#">Mobile</a></li>
+                            <li><a href="#">Laptop</a></li>
+                            <li><a href="#">Camera</a></li>
+                            <li><a href="#">Ipod</a></li>
+                            <li><a href="#">gravida auctor</a></li>
+                        </ul>
+                        <a href="#" class="auct">View More <span>&raquo;</span></a>
+                    </div>
+                </div>
+                <div class="content-right">
+                    @RenderBody()
+                </div>
+            </div>
+            <!-- Content-->
+        </div>
+        <!--Footer-->
+        <div id="footer">
+            <div class="footer-top">
+                <div class="page">
+                    <div class="f-nav-section">
+                        <ul>
+                            <li><a href="/">Home </a></li>
+                            <li><a href="#">Service </a></li>
+                            <li><a href="#">Shops </a></li>
+                            <li><a href="#">Reviews</a></li>
+                            <li><a href="#">New Products </a></li>
+                            <li><a href="#">Specials </a></li>
+                            <li><a href="#" class="last">Contact </a></li>
+                        </ul>
+                        <div class="signup">
+                            <ul>
+                                <li>
+                                    <label>Sign Up for Newsletter:</label>
+                                </li>
+                                <li>
+                                    <input type="text" value="" id="user_text" autocomplete="off" onkeypress="submitenter_search(event);"
+                                           onblur="if (this.value=='')this.value='';" onfocus="if (this.value=='')this.value=''" />
+                                </li>
+                                <li class="sms-last"><a href="#" class="sms">sms</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page">
+                <div class="footer-bottom">
+                    <div class="copyright">
+                        <ul>
+                            <li>&copy; 2021 </li>
+                            <li><a href="http://www.fb.com/hoan.glad" class="select"> HG</a> All Rights Reserved.</li>
+                        </ul>
+                    </div>
+                    <div class="social-icon">
+                        <ul>
+                            <li><a href="http://www.fb.com/hoan.glad" class="facebook"></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
+        <!--Footer-->
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!--Wrapper-->
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/slides")
     @RenderSection("scripts", required: false)
 </body>
 </html>
