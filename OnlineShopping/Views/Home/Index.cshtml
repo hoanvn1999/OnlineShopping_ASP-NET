@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Online Shopping</h1>
+    <p class="lead">ASP.NET webpage for Online Shopping</p>
+    <p><a href="https://fb.com/hoan.glad" class="btn btn-primary btn-lg">Author &raquo;</a></p>
+</div>
+
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>NAME</th>
+                <th>PRICE</th>
+                <th>IMG</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.products)
+            {
+                <tr>
+                    <td>@item.NAME</td>
+                    <td>@item.PRICE</td>
+                    <td><img src="@item.IMG_LINK" alt="Product Logo" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
