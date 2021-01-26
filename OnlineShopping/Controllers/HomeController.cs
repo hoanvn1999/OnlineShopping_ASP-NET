@@ -13,21 +13,17 @@ namespace OnlineShopping.Controllers
 
         public ActionResult Index()
         {
+            int category = Convert.ToInt16(Request.QueryString["cat"]);
             var product = _db.PRODUCTS.ToList();
+            if (category != 0)
+                product = (from s in _db.PRODUCTS where s.CATEGORY_ID == category select s).ToList();
             ViewBag.products = product;
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Product()
         {
             ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
             return View();
         }
