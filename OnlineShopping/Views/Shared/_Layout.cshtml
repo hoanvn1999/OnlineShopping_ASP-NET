@@ -37,8 +37,15 @@
                     <div class="header-aside">
                         <span>Call Us: +91 120 4735100</span>
                         <ul>
-                            <li class="border"><a href="~/User/SignUp" class="log"> login </a></li>
-                            <li><a href="~/User/SignUp" class="user">register</a></li>                            
+                            @if (Request.Cookies["USER"] != null)
+                            {
+                                <li class="border"><a href="~/User/SignOut" class="log"> logout </a></li>
+                            }
+                            else
+                            {
+                                <li class="border"><a href="~/User/SignIn" class="log"> login </a></li>
+                                <li><a href="~/User/SignUp" class="user">register</a></li>
+                            }
                             <li class="carts">
                                 <!-- Button trigger modal -->
                                 <a class="cart" href="~/Cart/Index">
