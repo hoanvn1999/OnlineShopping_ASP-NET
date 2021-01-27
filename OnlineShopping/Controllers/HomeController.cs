@@ -23,8 +23,9 @@ namespace OnlineShopping.Controllers
 
         public ActionResult Product()
         {
-            ViewBag.Message = "Your application description page.";
-
+            int id = Convert.ToInt16(Request.QueryString["id"]);
+            var product = (from s in _db.PRODUCTS where s.ID == id select s).ToList();
+            ViewBag.product = product;
             return View();
         }
     }
