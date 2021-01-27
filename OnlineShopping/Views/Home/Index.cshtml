@@ -6,11 +6,11 @@
     @foreach (var item in ViewBag.products)
     {
         <div class="product-info col-md-4">
-            <a href="~/Home/Product?id=@item.CATEGORY_ID">
+            <a href="~/Home/Product?id=@item.ID">
                 <img src="~/images/@item.IMG_LINK" alt="@item.NAME" title="product" />
                 <h2>@item.NAME</h2>
             </a>
-            <div class="add"><span>$@item.PRICE</span><a href="#">Add To Cart</a></div>
+            <div class="add"><span>$@item.PRICE</span><a href="~/Cart/AddItem?id=@item.ID&img=@item.IMG_LINK&name=@item.NAME&price=@item.PRICE&quantity=1">Add To Cart</a></div>
         </div>
     }
 </div>

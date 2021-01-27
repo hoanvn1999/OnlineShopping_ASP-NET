@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /*==================================================
  Eric Meyer's Global CSS Reset
  ==================================================*/
@@ -54,7 +54,6 @@ input {
  .shadow, .header-aside ul li+li+li, .nav-section, .latest-product h2, .fc-platform, .product-info,.fb_iframe_widget,.plugin {
 behavior: url(PIE.htc);
  position:relative;
-z-index:55;
 }
 @font-face {
 	font-family: 'geoslab703_xbdcn_btextra_bold';
