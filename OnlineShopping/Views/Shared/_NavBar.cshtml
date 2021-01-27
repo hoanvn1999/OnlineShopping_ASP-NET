@@ -1,0 +1,4 @@
+﻿@foreach (var item in ViewBag.categories)
+{
+    <li><a href="~/Home/Index?cat=@item.ID">@item.NAME</a></li>
+}
