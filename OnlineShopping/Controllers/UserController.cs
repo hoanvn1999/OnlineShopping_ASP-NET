@@ -21,26 +21,49 @@ namespace OnlineShopping.Controllers
         {
             if (ModelState.IsValid)
             {
-                OnlineShoppingEntities db = new OnlineShoppingEntities();
-                db.USERS.Add(obj);
-                db.SaveChanges();
+                OnlineShoppingEntities _db = new OnlineShoppingEntities();
+                _db.USERS.Add(obj);
+                _db.SaveChanges();
             }
-            return View(obj);
+            ViewBag.message = "User has been created. Please login to use system.";
+            return RedirectToAction("SignIn");
         }
 
         public ActionResult SignIn()
-        {
+        { 
             return View();
         }
 
-        public ActionResult PostSignIn()
+        [HttpPost]
+        public ActionResult SignIn(USER obj)
         {
-            return RedirectToRoute("Index", "Home");
+            if (Request.Cookies["USER"] != null)
+            {
+                Response.Cookies["USER"].Expires = DateTime.Now.AddDays(-1);
+            }
+            OnlineShoppingEntities _db = new OnlineShoppingEntities();
+            if((from s in _db.USERS where s.EMAIL == obj.EMAIL where s.PASSWORD == obj.PASSWORD select s).ToList().Count > 0)
+            {
+                string email = obj.EMAIL;
+                HttpCookie user = new HttpCookie("USER");
+                user["email"] = obj.EMAIL;
+                Response.Cookies.Add(user);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ViewBag.message = "Wrong email or password!";
+                return View(obj);
+            }
         }
 
         public ActionResult SignOut()
         {
-            return RedirectToRoute("Index", "Home");
+            if (Request.Cookies["USER"] != null)
+            {
+                Response.Cookies["USER"].Expires = DateTime.Now.AddDays(-1);
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }
