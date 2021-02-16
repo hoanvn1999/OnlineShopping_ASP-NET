@@ -40,6 +40,7 @@
                             @if (Request.Cookies["USER"] != null)
                             {
                                 <li class="border"><a href="~/User/SignOut" class="log"> logout </a></li>
+                                <li>@{Request.Cookies["USER"]["email"]}</li>
                             }
                             else
                             {
