@@ -1,0 +1,59 @@
+﻿<div class="w-100">
+    <div class="row" style="margin-bottom: 15px">
+        <div class="col-md-3" style="font-weight: bold">
+            Receiver:
+        </div>
+        <div class="col-md-9">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Phone Number">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Address">
+        </div>
+    </div>
+    @{double total = 0; }
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.products != null)
+            {
+                foreach (var item in ViewBag.products)
+                {
+                    total = total + item.ProductPrice * item.Quantity;
+                    <tr>
+                        <td><img src="~/images/@item.PruductIMG" style="width: 30px" alt="Product Logo" /></td>
+                        <td>@item.ProductName</td>
+                        <td class="price">@item.ProductPrice</td>
+                        <td><input type="number" class="form-control quantity" value="@item.Quantity" oninput="cal()"/></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <p style="font-weight: bold">Total: <span id="total">@total</span></p>
+    <script>
+        function cal() {
+            var price = document.getElementsByClassName('price');
+            var quantity = document.getElementsByClassName('quantity');
+            var money = 0;
+            for (var i = 0; i < price.length; i++) {
+                money = Number(money) + (Number(price[i].innerText) * Number(quantity[i].value));
+            }
+            document.getElementById('total').innerHTML = money;
+        }                  
+    </script>
+    <a href="#" class="btn btn-danger">Place an order</a>
+</div>

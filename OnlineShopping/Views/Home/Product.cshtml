@@ -11,7 +11,7 @@
             <h1>@item.NAME</h1>
             <h3 class="text-danger" style="margin-top:15px">@item.PRICE</h3>
             <div  style="margin-top:15px">@item.DESCRIPTION</div>
-            <div class="add"><a  style="float:left" href="">Add to cart</a></div>
+            <div class="add"><a  style="float:left" href="~/Cart/AddItem?id=@item.ID&img=@item.IMG_LINK&name=@item.NAME&price=@item.PRICE&quantity=1">Add to cart</a></div>
         </div>
     }
 </div>
